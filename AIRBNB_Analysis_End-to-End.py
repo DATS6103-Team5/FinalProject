@@ -1278,10 +1278,6 @@ FINAL MODEL
 """
 
 
-# City, State are not added early to make the experiments faster and get to a good model. 
-# Now adding these columns for a final prediction.
-
-
 final = final_df[model_cols]
 
 X = final.drop("price", axis = 1)
@@ -1291,13 +1287,9 @@ y = final["price"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 42)
 print("FINAL shapes: ", X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 
-# Fit model
-lgbm_model = LGBMRegressor(**params, num_iterations = 1000, verbose = -1)
-lgbm_model.fit(X_train, y_train)
-
 # Predictions
 train_preds = model.predict(X_train)
 test_preds = model.predict(X_test)
 
 # Evaluation
-lgbm_final_result = display_results(lgbm_model, y_train, train_preds, y_test, test_preds, exp = "FINAL LIGHTGBM MODEL")
+lgbm_final_result = display_results(model, y_train, train_preds, y_test, test_preds, exp = "FINAL LIGHTGBM MODEL")
