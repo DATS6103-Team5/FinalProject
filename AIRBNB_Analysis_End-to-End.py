@@ -1,3 +1,6 @@
+# **************************Takes around 20-25 minutes to run the entire code**************************
+
+
 #%%
 # IMPORT LIBRARIES
 
@@ -191,7 +194,7 @@ print(starter_listings_df[cat_cols].describe())
 ## Part3 (Handling Missing Values)
 
 
-### Simple Imputation with Mean and Model
+### Simple Imputation with Mean for numerical variables and Mode for categorical variables.
 
 
 # Remove the listings with extreme price values.
@@ -916,7 +919,7 @@ xgb_results = display_results(xgb_model, y_train, xgb_train_preds, y_test, xgb_t
 
 # LightGBM Regressor
 
-lgbm_model = lgbm.LGBMRegressor(num_iterations = 1000)
+lgbm_model = lgbm.LGBMRegressor(num_iterations = 1000, verbose = -1)
 lgbm_model.fit(X_train, y_train)
 lgbm_train_preds = lgbm_model.predict(X_train)
 lgbm_test_preds = lgbm_model.predict(X_test)
@@ -1012,7 +1015,7 @@ dtr_model_tuned = DecisionTreeRegressor(max_depth = 15, min_samples_split = 40, 
 rfr_model = RandomForestRegressor()
 rfr_model_tuned = RandomForestRegressor(n_estimators=100, max_depth = 15, min_samples_split = 40, min_samples_leaf = 10)
 xgb_model = xgb.XGBRegressor()
-lgbm_model = lgbm.LGBMRegressor(num_iterations = 1000)
+lgbm_model = lgbm.LGBMRegressor(num_iterations = 1000, verbose = -1)
 
 
 
@@ -1122,7 +1125,7 @@ def model_exp(X_train, y_train, X_test, y_test):
   dtr_model_tuned = DecisionTreeRegressor(max_depth = 15, min_samples_split = 40, min_samples_leaf = 10, min_impurity_decrease=0.0001)
   rfr_model_tuned = RandomForestRegressor(n_estimators=100, max_depth = 15, min_samples_split = 40, min_samples_leaf = 10)
   xgb_model = xgb.XGBRegressor()
-  lgbm_model = lgbm.LGBMRegressor(num_iterations = 1000)
+  lgbm_model = lgbm.LGBMRegressor(num_iterations = 1000, verbose = -1)
 
 
 
